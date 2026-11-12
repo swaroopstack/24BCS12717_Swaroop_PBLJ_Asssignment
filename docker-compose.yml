@@ -1,0 +1,24 @@
+# Optional: start a local MySQL 8 instance with Docker.
+# Usage: docker compose up -d
+# Then run the application with the default settings in application.properties.
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: student-management-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: student_management
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql-data:
