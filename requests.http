@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:8080
+
+### Add a new student
+POST {{baseUrl}}/api/students
+Content-Type: application/json
+
+{
+  "name": "Aarav Sharma",
+  "email": "aarav.sharma@example.com",
+  "course": "Computer Science",
+  "age": 20
+}
+
+### Get all students
+GET {{baseUrl}}/api/students
+
+### Get a student by ID
+GET {{baseUrl}}/api/students/1
+
+### Get students by course
+GET {{baseUrl}}/api/students/course/Computer%20Science
+
+### Update a student
+PUT {{baseUrl}}/api/students/1
+Content-Type: application/json
+
+{
+  "name": "Aarav Sharma",
+  "email": "aarav.sharma@example.com",
+  "course": "Information Technology",
+  "age": 21
+}
+
+### Delete a student
+DELETE {{baseUrl}}/api/students/1
